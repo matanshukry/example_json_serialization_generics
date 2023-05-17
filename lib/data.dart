@@ -1,3 +1,4 @@
+import 'package:example/person.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'data.freezed.dart';
@@ -12,17 +13,16 @@ class MyData<T> {
 }
 
 @freezed
-class Profile with $Profile {
+class Profile with _$Profile {
   const factory Profile({
-    @Default([])
-    MyData<Fruit> fruits,
+    required String key,
 
     @Default([])
-    MyData<Cake> cakes,
+    MyData<Person> data,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>
-      $ProfileFromJson(json);
+      _$ProfileFromJson(json);
 }
 
 enum Fruit {
